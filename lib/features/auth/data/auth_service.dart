@@ -25,15 +25,22 @@ class AuthService {
       );
     }
 
-    // The access token is optional for Supabase, but the official sample
-    // passes it when available.
-    final authorization = await account.authorizationClient
-        .authorizationForScopes(const []);
+    // The access token is optional for Supabase. Android does not allow an
+    // empty scope list, so we ask for the two basic scopes. This call does not
+    // show any extra screen: it returns null if consent is still needed.
+    String? accessToken;
+    try {
+      final authorization = await account.authorizationClient
+          .authorizationForScopes(const ['email', 'profile']);
+      accessToken = authorization?.accessToken;
+    } catch (_) {
+      accessToken = null; // sign-in continues with the ID token only
+    }
 
     return _client.auth.signInWithIdToken(
       provider: OAuthProvider.google,
       idToken: idToken,
-      accessToken: authorization?.accessToken,
+      accessToken: accessToken,
     );
   }
 
