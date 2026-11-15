@@ -49,3 +49,5 @@ app.*.map.json
 
 # Secrets (never commit real keys)
 .env
+# Private AI context file (kept outside the repo)
+CLAUDE.md
