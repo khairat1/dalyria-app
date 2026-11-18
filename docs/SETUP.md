@@ -27,7 +27,7 @@ Menu names in the Supabase and Google consoles change from time to time. If a bu
 3. Click **New project** and fill in:
    - **Name:** `dalyria`
    - **Database password:** use the generator, then save it in a password manager. You cannot read it again later.
-   - **Region:** **Central EU (Frankfurt)** (`eu-central-1`).
+   - **Region:** **Central EU (Frankfurt)** (`eu-central-1`). Choose it yourself: do not leave it on *Automatic*, which picked Tokyo for this project. The region cannot be changed later. After creation, check **Project Settings, General**, which must show `eu-central-1`.
    - If you see an option such as **Enable automatic RLS** (Row Level Security on every new table), turn it on.
 4. Wait about 2 minutes until the project is ready.
 5. Open **Project Settings, API Keys**. If you only see legacy keys, click **Create new API keys**. Copy the **Publishable key** (`sb_publishable_...`). Do **not** copy the secret key.
